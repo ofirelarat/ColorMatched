@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:padding="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="2"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/meaningColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:text="Color Meaning"
+                android:layout_weight="1"
+                android:gravity="center"/>
+            <View
+              android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#95a5a6"
+                android:layout_weight="0"
+                android:layout_margin="25dp"/>
+            <TextView
+                android:id="@+id/matchingColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:text="Color"
+                android:layout_weight="1"
+                android:gravity="center"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
