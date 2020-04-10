@@ -1,18 +1,29 @@
 package com.ofirelarat.colormatched;
 
+import android.content.Context;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class CardItemModel {
+    public static final Map<Integer,Integer> colorNameToValueIds = getColorsNamesToValueMap();
+
     private String meaningColorName;
     private String matchingColorName;
-    private String meaningColorColor;
-    private String matchingColorColor;
+    private int meaningColorViewColor;
+    private int matchingColorViewColor;
     private boolean isAMatch;
 
-    public CardItemModel(String meaningColorName, String matchingColorName, String meaningColorColor, String matchingColorColor, boolean isAMatch) {
-        this.meaningColorName = meaningColorName;
-        this.matchingColorName = matchingColorName;
-        this.meaningColorColor = meaningColorColor;
-        this.matchingColorColor = matchingColorColor;
+    public CardItemModel(Context context, int meaningColorName, int matchingColorName, int meaningColorViewColor, int matchingColorViewColor, boolean isAMatch) {
+        this.meaningColorName = context.getResources().getString(meaningColorName);
+        this.matchingColorName = context.getResources().getString(matchingColorName);
+        this.meaningColorViewColor = context.getResources().getColor(meaningColorViewColor);
+        this.matchingColorViewColor = context.getResources().getColor(matchingColorViewColor);
         this.isAMatch = isAMatch;
+    }
+
+    public static Map<Integer, Integer> getColorNameToValueIds() {
+        return colorNameToValueIds;
     }
 
     public String getMeaningColorName() {
@@ -31,20 +42,20 @@ public class CardItemModel {
         this.matchingColorName = matchingColorName;
     }
 
-    public String getMeaningColorColor() {
-        return meaningColorColor;
+    public int getMeaningColorViewColor() {
+        return meaningColorViewColor;
     }
 
-    public void setMeaningColorColor(String meaningColorColor) {
-        this.meaningColorColor = meaningColorColor;
+    public void setMeaningColorViewColor(int meaningColorViewColor) {
+        this.meaningColorViewColor = meaningColorViewColor;
     }
 
-    public String getMatchingColorColor() {
-        return matchingColorColor;
+    public int getMatchingColorViewColor() {
+        return matchingColorViewColor;
     }
 
-    public void setMatchingColorColor(String matchingColorColor) {
-        this.matchingColorColor = matchingColorColor;
+    public void setMatchingColorViewColor(int matchingColorViewColor) {
+        this.matchingColorViewColor = matchingColorViewColor;
     }
 
     public boolean isAMatch() {
@@ -53,5 +64,22 @@ public class CardItemModel {
 
     public void setAMatch(boolean AMatch) {
         isAMatch = AMatch;
+    }
+
+    private static Map<Integer, Integer> getColorsNamesToValueMap(){
+        Map<Integer,Integer> colorsNamesToValue = new HashMap<>();
+        colorsNamesToValue.put(R.string.black,R.color.black);
+        colorsNamesToValue.put(R.string.blue,R.color.blue);
+        colorsNamesToValue.put(R.string.green,R.color.green);
+        colorsNamesToValue.put(R.string.orange,R.color.orange);
+        colorsNamesToValue.put(R.string.red,R.color.red);
+
+        return colorsNamesToValue;
+    }
+
+    public enum CardDifficalty{
+        EASY,
+        MEDIUM,
+        HARD
     }
 }

@@ -21,12 +21,12 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CardItemModel colorModel1 = new CardItemModel("black","blue","","",false);
-        CardItemModel colorModel2 = new CardItemModel("blue","blue","","",true);
-        CardItemModel colorModel3 = new CardItemModel("blue","blue","","",true);
-        CardItemModel colorModel4 = new CardItemModel("blue","blue","","",true);
-        CardItemModel colorModel5 = new CardItemModel("blue","blue","","",true);
-        CardItemModel colorModel6 = new CardItemModel("blue","blue","","",true);
+        CardItemModel colorModel1 = new CardItemModel(this,R.string.black,R.string.blue,R.color.black,R.color.blue,false);
+        CardItemModel colorModel2 = new CardItemModel(this,R.string.blue,R.string.blue,R.color.blue,R.color.blue,true);
+        CardItemModel colorModel3 = new CardItemModel(this,R.string.green,R.string.green,R.color.black,R.color.green,true);
+        CardItemModel colorModel4 = new CardItemModel(this,R.string.blue,R.string.orange,R.color.red,R.color.orange,false);
+        CardItemModel colorModel5 = new CardItemModel(this,R.string.red,R.string.red,R.color.black,R.color.red,true);
+        CardItemModel colorModel6 = new CardItemModel(this,R.string.orange,R.string.orange,R.color.orange,R.color.orange,true);
 
         CardItemModel[] colorsItems = {colorModel1, colorModel2, colorModel3, colorModel4, colorModel5,colorModel6};
 
