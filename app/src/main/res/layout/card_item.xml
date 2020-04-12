@@ -24,7 +24,8 @@
                 android:text="Color Meaning"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textStyle="bold"/>
             <View
               android:layout_width="match_parent"
                 android:layout_height="3dp"
@@ -39,7 +40,8 @@
                 android:text="Color"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:textStyle="bold"/>
             <FrameLayout
                 android:id="@+id/matchingColorCircle"
                 android:layout_width="wrap_content"
@@ -48,5 +50,33 @@
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center" />
         </LinearLayout>
+        <FrameLayout
+            android:id="@+id/left_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/overlay_black">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/incorrect_64"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/right_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/overlay_black">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/correct_64"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
     </androidx.cardview.widget.CardView>
 </FrameLayout>
