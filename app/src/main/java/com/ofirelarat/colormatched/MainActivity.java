@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
         if((swipedCard.isAMatch() && direction == Direction.Right)
                 || ((!swipedCard.isAMatch()) && direction == Direction.Left)){
             Toast.makeText(MainActivity.this, "correct!", Toast.LENGTH_LONG).show();
-            score += 100;
+            score += 10 * (swipedCard.getDifficultyLevel().ordinal() + 1);
             scoreText.setText(String.valueOf(score));
         }else{
             Toast.makeText(MainActivity.this, "error!", Toast.LENGTH_LONG).show();
@@ -155,7 +155,11 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
     private CardItemModel[] getColorsItems(){
         CardItemModel[] cardItemModels = new CardItemModel[50];
         for (int i = 0; i<cardItemModels.length; i++) {
-            cardItemModels[i] = CardItemModel.getRandomizeCard(this);
+            if(i < 4){
+                cardItemModels[i] = CardItemModel.getRandomizeCardWithDefaultLevel(this, CardItemModel.CardDifficulty.EASY);
+            }else {
+                cardItemModels[i] = CardItemModel.getRandomizeCard(this);
+            }
         }
 
         return cardItemModels;
@@ -184,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
         score = 0;
         scoreText.setText(String.valueOf(score));
         colorsItems = getColorsItems();
+        cardsAdapter = new CardItemAdapter(colorsItems);
         cardStackView.setAdapter(cardsAdapter);
         initTimerView();
     }

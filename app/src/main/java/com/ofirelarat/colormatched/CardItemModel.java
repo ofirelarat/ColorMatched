@@ -15,15 +15,17 @@ public class CardItemModel {
     private int meaningColorViewColor;
     private int matchingColorViewColor;
     private boolean isAMatch;
+    private CardDifficulty difficultyLevel;
 
     public CardItemModel(){ }
 
-    public CardItemModel(Context context, int meaningColorName, int matchingColorName, int meaningColorViewColor, int matchingColorViewColor, boolean isAMatch) {
+    public CardItemModel(Context context, int meaningColorName, int matchingColorName, int meaningColorViewColor, int matchingColorViewColor, boolean isAMatch, CardDifficulty difficultyLevel) {
         this.meaningColorName = context.getResources().getString(meaningColorName);
         this.matchingColorName = context.getResources().getString(matchingColorName);
         this.meaningColorViewColor = context.getResources().getColor(meaningColorViewColor);
         this.matchingColorViewColor = context.getResources().getColor(matchingColorViewColor);
         this.isAMatch = isAMatch;
+        this.difficultyLevel = difficultyLevel;
     }
 
     public static Map<Integer, Integer> getColorNameToValueIds() {
@@ -70,7 +72,24 @@ public class CardItemModel {
         isAMatch = AMatch;
     }
 
+    public CardDifficulty getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(CardDifficulty difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
     public static CardItemModel getRandomizeCard(Context context){
+        Random random = new Random();
+        CardDifficulty randomCardDifficultLevel = CardDifficulty.values()[random.nextInt(3)];
+        CardItemModel cardItemModel = getRandomizeCardWithDefaultLevel(context, randomCardDifficultLevel);
+
+        return cardItemModel;
+    }
+
+
+    public static CardItemModel getRandomizeCardWithDefaultLevel(Context context, CardDifficulty difficultyLevel){
         CardItemModel cardItemModel = new CardItemModel();
 
         Random random =new Random();
@@ -79,18 +98,36 @@ public class CardItemModel {
         int randomColor = random.nextInt(colorsCount);
         int randomColorRes = getRandomColorRes(randomColor);
         cardItemModel.setMeaningColorName(context, randomColorRes);
-        cardItemModel.setMeaningColorViewColor(context, colorNameToValueIds.get(randomColorRes));
 
         boolean isAMatch = random.nextBoolean();
         cardItemModel.setAMatch(isAMatch);
         if(isAMatch){
-            cardItemModel.setMatchingColorName(context, randomColorRes);
             cardItemModel.setMatchingColorViewColor(context, colorNameToValueIds.get(randomColorRes));
         }else {
             int randomMatchColor = random.nextInt(colorsCount);
             int randomMatchColorRes = getRandomColorRes(randomMatchColor);
-            cardItemModel.setMatchingColorName(context, randomMatchColorRes);
             cardItemModel.setMatchingColorViewColor(context, colorNameToValueIds.get(randomMatchColorRes));
+        }
+
+        cardItemModel.setDifficultyLevel(difficultyLevel);
+        switch (difficultyLevel){
+            case HARD:
+                int randomColorHard = random.nextInt(colorsCount);
+                int randomMeaningColorResHard = getRandomColorRes(randomColorHard);
+                cardItemModel.setMeaningColorViewColor(context, colorNameToValueIds.get(randomMeaningColorResHard));
+                randomColorHard = random.nextInt(colorsCount);
+                int randomMatchingColorResHard = getRandomColorRes(randomColorHard);
+                cardItemModel.setMatchingColorName(context, randomMatchingColorResHard);
+                break;
+            case MEDIUM:
+                cardItemModel.setMeaningColorViewColor(context, R.color.black);
+                int randomColorMedium = random.nextInt(colorsCount);
+                int randomMatchColorResMedium = getRandomColorRes(randomColorMedium);
+                cardItemModel.setMatchingColorName(context, randomMatchColorResMedium);
+                break;
+            case EASY:
+                cardItemModel.setMeaningColorViewColor(context, R.color.black);
+                break;
         }
 
         return cardItemModel;
@@ -108,6 +145,14 @@ public class CardItemModel {
                 return R.string.orange;
             case 4:
                 return R.string.red;
+            case 5:
+                return R.string.yellow;
+            case 6:
+                return R.string.purple;
+            case 7:
+                return R.string.pink;
+            case 8:
+                return R.string.gray;
             default:
                 return R.string.black;
         }
@@ -120,11 +165,15 @@ public class CardItemModel {
         colorsNamesToValue.put(R.string.green,R.color.green);
         colorsNamesToValue.put(R.string.orange,R.color.orange);
         colorsNamesToValue.put(R.string.red,R.color.red);
+        colorsNamesToValue.put(R.string.yellow,R.color.yellow);
+        colorsNamesToValue.put(R.string.purple,R.color.purple);
+        colorsNamesToValue.put(R.string.pink,R.color.pink);
+        colorsNamesToValue.put(R.string.gray,R.color.gray);
 
         return colorsNamesToValue;
     }
 
-    public enum CardDifficalty{
+    public enum CardDifficulty{
         EASY,
         MEDIUM,
         HARD

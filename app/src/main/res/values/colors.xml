@@ -9,4 +9,8 @@
     <color name="green">#2ecc71</color>
     <color name="orange">#e67e22</color>
     <color name="red">#e74c3c</color>
+    <color name="yellow">#f1c40f</color>
+    <color name="purple">#9b59b6</color>
+    <color name="pink">#e84393</color>
+    <color name="gray">#b2bec3</color>
 </resources>

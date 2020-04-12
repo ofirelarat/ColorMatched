@@ -24,7 +24,20 @@ public class CardItemViewHolder extends RecyclerView.ViewHolder {
 
     public void setUpDataInCard(CardItemModel cardItemModel){
         meaningColor.setText(cardItemModel.getMeaningColorName());
-        matchingColorText.setText(cardItemModel.getMatchingColorName());
-        ((GradientDrawable)matchingColorCircle.getBackground()).setColor(cardItemModel.getMatchingColorViewColor());
+        switch (cardItemModel.getDifficultyLevel()){
+            case HARD:
+            case MEDIUM:
+                matchingColorText.setText(cardItemModel.getMatchingColorName());
+                matchingColorText.setTextColor(cardItemModel.getMatchingColorViewColor());
+                meaningColor.setTextColor(cardItemModel.getMeaningColorViewColor());
+                matchingColorCircle.setVisibility(View.GONE);
+                matchingColorText.setVisibility(View.VISIBLE);
+                break;
+            case EASY:
+                ((GradientDrawable)matchingColorCircle.getBackground()).setColor(cardItemModel.getMatchingColorViewColor());
+                matchingColorCircle.setVisibility(View.VISIBLE);
+                matchingColorText.setVisibility(View.GONE);
+                break;
+        }
     }
 }
