@@ -38,7 +38,8 @@
             app:m_cicle_stroke_width="10"
             app:m_arc_stroke_color="@android:color/white"
             app:m_circle_stroke_color="@color/blue"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:layout_alignParentLeft="true"/>
     </RelativeLayout>
 
     <RelativeLayout

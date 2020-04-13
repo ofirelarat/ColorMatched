@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -178,9 +179,11 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
                 .setNegativeButton("no", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        Intent intent = new Intent(MainActivity.this, HomePage.class);
+                        startActivity(intent);
                     }
                 })
+                .setCancelable(false)
                 .show();
     }
 

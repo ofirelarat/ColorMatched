@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ColorMatched</string>
+
+    <string name="black">Negro</string>
+    <string name="blue">Azul</string>
+    <string name="green">Verde</string>
+    <string name="orange">Naranja</string>
+    <string name="red">Rojo</string>
+    <string name="yellow">Amarillo</string>
+    <string name="purple">Morado</string>
+    <string name="pink">Rosado</string>
+    <string name="gray">Gris</string>
+</resources>

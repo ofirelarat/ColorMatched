@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ColorMatched</string>
+
+    <string name="black">שחור</string>
+    <string name="blue">כחול</string>
+    <string name="green">ירוק</string>
+    <string name="orange">כתום</string>
+    <string name="red">אדום</string>
+    <string name="yellow">צהוב</string>
+    <string name="purple">סגול</string>
+    <string name="pink">ורוד</string>
+    <string name="gray">אפור</string>
+</resources>
