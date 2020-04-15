@@ -4,11 +4,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
@@ -184,9 +186,13 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
     }
 
     private void displayEndGameDialog(){
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.end_game_dialog, null, false);
+
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle("Game Over")
-                .setMessage("your score is: " + score + ", would you like to play again?")
+                .setView(view)
+                .setMessage("your score is: " + score)
                 .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
