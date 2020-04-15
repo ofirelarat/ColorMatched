@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.Locale;
 
@@ -39,6 +40,9 @@ public class HomePage extends AppCompatActivity {
 
             }
         });
+
+        SharedPreferencesMgr sharedPreferencesMgr = new SharedPreferencesMgr(this);
+        ((TextView)findViewById(R.id.scoreText)).setText(String.valueOf(sharedPreferencesMgr.getHighScore()));
     }
 
     public void onClickLeaderBoard(View view) {

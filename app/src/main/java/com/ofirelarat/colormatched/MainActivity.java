@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -14,6 +15,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
 import com.yuyakaido.android.cardstackview.CardStackView;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
     private CardStackLayoutManager manager;
     private CardStackView cardStackView;
 
+    private LottieAnimationView winningAnim;
     private TextView scoreText;
     private CircularView progressBar;
 
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
         setContentView(R.layout.activity_main);
 
         cardStackView = (CardStackView)findViewById(R.id.card_stack_view);
+        winningAnim = findViewById(R.id.lottie_win_animation);
         scoreText = findViewById(R.id.scoreText);
         progressBar = findViewById(R.id.circular_view);
 
@@ -63,12 +67,17 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
         Log.d("card swiped", swipedCard.isAMatch() + " " + direction);
         if((swipedCard.isAMatch() && direction == Direction.Right)
                 || ((!swipedCard.isAMatch()) && direction == Direction.Left)){
-            Toast.makeText(MainActivity.this, "correct!", Toast.LENGTH_LONG).show();
+            winningAnim.setAnimation(R.raw.correct);
             score += 10 * (swipedCard.getDifficultyLevel().ordinal() + 1);
             scoreText.setText(String.valueOf(score));
         }else{
-            Toast.makeText(MainActivity.this, "error!", Toast.LENGTH_LONG).show();
+            winningAnim.setAnimation(R.raw.incorrect);
         }
+
+        winningAnim.setSpeed(2.0f);
+        winningAnim.setProgress(0);
+        winningAnim.playAnimation();
+        winningAnim.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -83,7 +92,13 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
 
     @Override
     public void onCardAppeared(View view, int position) {
-
+        int ANIM_DURATION = 750;
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                winningAnim.setVisibility(View.INVISIBLE);
+            }
+        }, ANIM_DURATION);
     }
 
     @Override
@@ -138,7 +153,8 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
                             @Override
                             public void onTimerFinish() {
                                 // Will be called if times up of countdown timer
-                                Toast.makeText(MainActivity.this, "Timer Finished ", Toast.LENGTH_SHORT).show();
+                                SharedPreferencesMgr sharedPreferencesMgr = new SharedPreferencesMgr(MainActivity.this);
+                                sharedPreferencesMgr.writeNewScoerifIsHigher(score);
                                 displayEndGameDialog();
                             }
 
@@ -150,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
                         });
 
         progressBar.setOptions(builderWithTimer);
+        progressBar.setVisibility(View.VISIBLE);
         progressBar.startTimer();
     }
 

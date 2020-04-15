@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/colorAccent">
+    android:background="@drawable/background">
 
     <RelativeLayout
         android:id="@+id/header_container"
@@ -29,6 +29,16 @@
             android:textColor="#fff"
             android:textSize="40sp"
             android:textStyle="bold" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_win_animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_centerHorizontal="true"
+            app:lottie_autoPlay="false"
+            app:lottie_rawRes="@raw/correct"
+            app:lottie_loop="false"
+            android:visibility="invisible"/>
         <ticker.views.com.ticker.widgets.circular.timer.view.CircularView
             android:id="@+id/circular_view"
             android:layout_width="wrap_content"
@@ -79,7 +89,8 @@
             app:backgroundTint="@android:color/white"
             app:fabSize="normal"
             app:rippleColor="#226FE2B3"
-            android:onClick="onClickIncorrectBtn"/>
+            android:onClick="onClickIncorrectBtn"
+            android:visibility="visible"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/correct_button"

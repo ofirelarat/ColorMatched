@@ -107,6 +107,9 @@ public class CardItemModel {
             int randomMatchColor = random.nextInt(colorsCount);
             int randomMatchColorRes = getRandomColorRes(randomMatchColor);
             cardItemModel.setMatchingColorViewColor(context, colorNameToValueIds.get(randomMatchColorRes));
+            if(randomColor == randomMatchColor){
+                cardItemModel.setAMatch(true);
+            }
         }
 
         cardItemModel.setDifficultyLevel(difficultyLevel);

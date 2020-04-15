@@ -24,12 +24,13 @@ public class CardItemViewHolder extends RecyclerView.ViewHolder {
 
     public void setUpDataInCard(CardItemModel cardItemModel){
         meaningColor.setText(cardItemModel.getMeaningColorName());
+        meaningColor.setTextColor(cardItemModel.getMeaningColorViewColor());
+
         switch (cardItemModel.getDifficultyLevel()){
             case HARD:
             case MEDIUM:
                 matchingColorText.setText(cardItemModel.getMatchingColorName());
                 matchingColorText.setTextColor(cardItemModel.getMatchingColorViewColor());
-                meaningColor.setTextColor(cardItemModel.getMeaningColorViewColor());
                 matchingColorCircle.setVisibility(View.GONE);
                 matchingColorText.setVisibility(View.VISIBLE);
                 break;
