@@ -26,7 +26,7 @@
                 android:padding="32dp"
                 android:layout_weight="1"
                 android:layout_marginBottom="15dp"
-                android:drawableRight="@drawable/game_controller"
+                android:drawableRight="@drawable/timer"
                 android:layout_centerHorizontal="true"
                 android:onClick="onClickStart"/>
         </RelativeLayout>

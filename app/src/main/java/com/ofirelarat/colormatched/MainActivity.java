@@ -168,7 +168,6 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
                         });
 
         progressBar.setOptions(builderWithTimer);
-        progressBar.setVisibility(View.VISIBLE);
         progressBar.startTimer();
     }
 
