@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.gms.games.Games;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
 import com.yuyakaido.android.cardstackview.CardStackView;
@@ -157,6 +158,13 @@ public class MainActivity extends AppCompatActivity implements CardStackListener
                                 // Will be called if times up of countdown timer
                                 SharedPreferencesMgr sharedPreferencesMgr = new SharedPreferencesMgr(MainActivity.this);
                                 sharedPreferencesMgr.writeNewScoerifIsHigher(score);
+                                try {
+                                    Games.getLeaderboardsClient(MainActivity.this, GoogleAccountMgr.getSignInAccount())
+                                            .submitScore("CgkIpYizjYUaEAIQAQ", score);
+                                }catch (Exception ex){
+                                    Log.d("error", ex.getMessage());
+                                }
+
                                 displayEndGameDialog();
                             }
 

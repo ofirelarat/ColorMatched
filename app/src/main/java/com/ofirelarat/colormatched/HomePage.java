@@ -1,5 +1,6 @@
 package com.ofirelarat.colormatched;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.games.Games;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.Locale;
 
@@ -43,6 +50,8 @@ public class HomePage extends AppCompatActivity {
 
         SharedPreferencesMgr sharedPreferencesMgr = new SharedPreferencesMgr(this);
         ((TextView)findViewById(R.id.scoreText)).setText(String.valueOf(sharedPreferencesMgr.getHighScore()));
+
+        GoogleAccountMgr.init(this);
     }
 
 
@@ -55,6 +64,26 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void onClickLeaderBoard(View view) {
+        final int RC_LEADERBOARD_UI = 9004;
+        try {
+            GoogleSignInAccount signInAccount = GoogleAccountMgr.getSignInAccount();
+            Games.getLeaderboardsClient(getApplicationContext(), signInAccount)
+                    .getLeaderboardIntent("CgkIpYizjYUaEAIQAQ")
+                    .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                        @Override
+                        public void onSuccess(Intent intent) {
+                            startActivityForResult(intent, RC_LEADERBOARD_UI);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(HomePage.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+        } catch (Throwable ex) {
+            Toast.makeText(HomePage.this, ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private LangItem[] getLangs(){

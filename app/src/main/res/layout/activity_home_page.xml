@@ -51,13 +51,12 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible">
+            android:layout_height="wrap_content">
             <Button
                 android:id="@+id/leaderBoardBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ellipsis"
+                android:background="@drawable/ellipsis_white"
                 android:text="Leaderboard "
                 android:textColor="@color/colorPrimary"
                 android:textSize="22dp"

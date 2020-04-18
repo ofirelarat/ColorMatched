@@ -39,4 +39,7 @@ dependencies {
     implementation 'com.github.rehmanmuradali:ticker:1.0.0'
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.codemybrainsout.onboarding:onboarder:1.0.4'
+    implementation "com.google.android.gms:play-services-games:19.0.0"
+    implementation "com.google.android.gms:play-services-auth:17.0.0"
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
 }
