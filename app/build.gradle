@@ -38,4 +38,5 @@ dependencies {
     implementation 'com.yuyakaido.android:card-stack-view:2.3.4'
     implementation 'com.github.rehmanmuradali:ticker:1.0.0'
     implementation 'com.airbnb.android:lottie:3.4.0'
+    implementation 'com.codemybrainsout.onboarding:onboarder:1.0.4'
 }

@@ -45,12 +45,16 @@ public class HomePage extends AppCompatActivity {
         ((TextView)findViewById(R.id.scoreText)).setText(String.valueOf(sharedPreferencesMgr.getHighScore()));
     }
 
-    public void onClickLeaderBoard(View view) {
+
+    public void onClickStartClassic(View view) {
     }
 
-    public void onClickStart(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void onClickStartArcade(View view) {
+        Intent intent = new Intent(this, OnboardingActivity.class);
         startActivity(intent);
+    }
+
+    public void onClickLeaderBoard(View view) {
     }
 
     private LangItem[] getLangs(){
