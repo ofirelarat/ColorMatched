@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "894723474469",
+    "firebase_url": "https://colorsmatched-e8015.firebaseio.com",
+    "project_id": "colorsmatched-e8015",
+    "storage_bucket": "colorsmatched-e8015.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894723474469:android:993117cecb3d765b9c2bcc",
+        "android_client_info": {
+          "package_name": "com.ofirelarat.colormatched"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894723474469-72685vd7ns0iqidigh1ua33hvtmbdpsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKocjMbx3p-hD4zsv1iHAGiMgOIL0HrH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894723474469-72685vd7ns0iqidigh1ua33hvtmbdpsq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
