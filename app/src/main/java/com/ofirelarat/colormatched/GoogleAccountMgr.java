@@ -12,6 +12,9 @@ public class GoogleAccountMgr {
     private static GoogleSignInAccount signInAccount;
 
     public static void init(Activity activity){
+        GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("894723474469-72685vd7ns0iqidigh1ua33hvtmbdpsq.apps.googleusercontent.com").build();
+
         if(signInAccount == null){
             GoogleSignInAccount lastSignedAcc = GoogleSignIn.getLastSignedInAccount(activity);
             if(lastSignedAcc == null) {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ColorMatched</string>
+    <string name="app_name" translatable="false">ColorMatched</string>
     <string name="app_id" translatable="false">894723474469</string>
 
     <string name="black">Black</string>

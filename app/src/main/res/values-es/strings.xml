@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">ColorMatched</string>
-
     <string name="black">Negro</string>
     <string name="blue">Azul</string>
     <string name="green">Verde</string>
