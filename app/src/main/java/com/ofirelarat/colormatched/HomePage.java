@@ -73,7 +73,14 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void onClickStartArcade(View view) {
-        Intent intent = new Intent(this, OnboardingActivity.class);
+        SharedPreferencesMgr sharedPreferencesMgr = new SharedPreferencesMgr(this);
+        Intent intent;
+        if(sharedPreferencesMgr.isFirstTimeUse()) {
+            intent = new Intent(this, OnboardingActivity.class);
+        }else{
+            intent = new Intent(this, MainActivity.class);
+        }
+
         startActivity(intent);
     }
 
