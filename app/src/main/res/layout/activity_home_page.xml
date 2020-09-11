@@ -74,9 +74,12 @@
             android:layout_marginTop="30dp">
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/langsSpinner"
+                android:textSize="18dp"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:stateListAnimator="@drawable/spinner_sla"
+                android:background="@drawable/spinner_bg"
                 android:spinnerMode="dropdown"/>
         </RelativeLayout>
     </LinearLayout>
